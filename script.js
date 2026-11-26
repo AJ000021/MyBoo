@@ -251,7 +251,7 @@
      ======================================================================== */
   const LETTER_PARAGRAPHS = [
     { type: 'salutation', text: 'My Dearest Boo,' },
-    { type: 'normal', text: 'Happy 3rd Monthsary, my love!' },
+    { type: 'normal', text: 'Happy 3rd Monthsary, My Boo!' },
     {
       type: 'normal',
       text: "I honestly don't know where to begin because there are so many things I want to tell you. Three months might seem like a short time, but these three months with you have given me countless reasons to smile, countless memories to treasure, and countless reasons to be thankful."
