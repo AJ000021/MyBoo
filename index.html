@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Three Months With You — For My Boo</title>
+  <meta name="description" content="Three Months With You — A digital love letter celebrating our 3rd Monthsary.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Dancing+Script:wght@500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Shared SVG Gradients for Animated Tulips -->
+  <svg class="svg-defs" aria-hidden="true" width="0" height="0" focusable="false">
+    <defs>
+      <linearGradient id="grad-stem" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#93B792"/>
+        <stop offset="100%" stop-color="#5E835F"/>
+      </linearGradient>
+      <linearGradient id="grad-leaf" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#A5CBA3" stop-opacity="0.92"/>
+        <stop offset="100%" stop-color="#688F69" stop-opacity="0.88"/>
+      </linearGradient>
+      <!-- Pink Tulip -->
+      <linearGradient id="grad-pink-outer" x1="50%" y1="0%" x2="50%" y2="100%">
+        <stop offset="0%" stop-color="#FFE0EC"/>
+        <stop offset="55%" stop-color="#F3AFCB"/>
+        <stop offset="100%" stop-color="#D679A3"/>
+      </linearGradient>
+      <linearGradient id="grad-pink-inner" x1="50%" y1="0%" x2="50%" y2="100%">
+        <stop offset="0%" stop-color="#FFF5F9"/>
+        <stop offset="60%" stop-color="#F7C6D9"/>
+        <stop offset="100%" stop-color="#E08CB3"/>
+      </linearGradient>
+      <!-- Purple Tulip -->
+      <linearGradient id="grad-purple-outer" x1="50%" y1="0%" x2="50%" y2="100%">
+        <stop offset="0%" stop-color="#F1E6FF"/>
+        <stop offset="55%" stop-color="#B99AE8"/>
+        <stop offset="100%" stop-color="#8055A6"/>
+      </linearGradient>
+      <linearGradient id="grad-purple-inner" x1="50%" y1="0%" x2="50%" y2="100%">
+        <stop offset="0%" stop-color="#FBF7FF"/>
+        <stop offset="60%" stop-color="#DCC6F5"/>
+        <stop offset="100%" stop-color="#9B72CF"/>
+      </linearGradient>
+      <!-- White Tulip -->
+      <linearGradient id="grad-white-outer" x1="50%" y1="0%" x2="50%" y2="100%">
+        <stop offset="0%" stop-color="#FFFFFF"/>
+        <stop offset="68%" stop-color="#FFF9FC"/>
+        <stop offset="100%" stop-color="#F7C6D9"/>
+      </linearGradient>
+      <linearGradient id="grad-white-inner" x1="50%" y1="0%" x2="50%" y2="100%">
+        <stop offset="0%" stop-color="#FFFFFF"/>
+        <stop offset="72%" stop-color="#FDF3F8"/>
+        <stop offset="100%" stop-color="#DCC6F5"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- Ambient Dreamy Background -->
+  <div class="ambient-backdrop" aria-hidden="true">
+    <div class="glow-orb glow-orb-1"></div>
+    <div class="glow-orb glow-orb-2"></div>
+    <div class="glow-orb glow-orb-3"></div>
+  </div>
+  <canvas id="ambient-canvas" aria-hidden="true"></canvas>
+
+  <!-- Floating Music Player -->
+  <aside class="music-player" id="music-player" aria-label="Background music player">
+    <audio id="bg-music" loop preload="metadata">
+      <source src="About%20You.mp3" type="audio/mpeg">
+    </audio>
+    <div class="music-eq" id="music-eq" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="music-info">
+      <span class="music-title">About You</span>
+      <span class="music-artist" id="music-status">The 1975</span>
+    </div>
+    <div class="music-controls">
+      <button type="button" class="music-btn" id="music-toggle" aria-label="Play music" title="Play / Pause">
+        <svg class="icon-play" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+          <path d="M8 5.14v14l11-7-11-7z"/>
+        </svg>
+        <svg class="icon-pause" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+          <path d="M6 5h4v14H6V5zm8 0h4v14h-4V5z"/>
+        </svg>
+      </button>
+      <button type="button" class="music-btn" id="mute-toggle" aria-label="Mute music" title="Mute / Unmute">
+        <svg class="icon-unmuted" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+        </svg>
+        <svg class="icon-muted" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+          <line x1="23" y1="9" x2="17" y2="15"/>
+          <line x1="17" y1="9" x2="23" y2="15"/>
+        </svg>
+      </button>
+    </div>
+  </aside>
+
+  <main id="experience">
+    <!-- SECTION 1: THE WELCOME SCREEN -->
+    <section id="welcome-section" class="screen screen--active" aria-labelledby="welcome-heading">
+      <div class="screen-content welcome-content">
+        <p class="eyebrow fade-stagger" style="--delay: 0.15s">Three Months With You</p>
+        <h1 id="welcome-heading" class="welcome-title fade-stagger" style="--delay: 0.35s">Hey, My Boo...</h1>
+        <p class="welcome-subtitle fade-stagger" style="--delay: 0.6s">I made something special for you.</p>
+        <div class="cta-wrap fade-stagger" style="--delay: 0.9s">
+          <button type="button" class="btn-romantic" id="btn-open-heart">
+            <span>Open My Heart ♡</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Delicate Framing Tulips -->
+      <div class="corner-garden corner-garden--left" aria-hidden="true">
+        <svg class="tulip tulip--pink tulip--bloomed tulip--sway-slow" viewBox="0 0 120 220">
+          <path class="tulip-stem" d="M60 98 C59 135, 62 175, 60 215" stroke="url(#grad-stem)" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <path class="tulip-leaf" d="M60 198 C34 175, 22 140, 28 112 C42 132, 54 162, 60 192 Z" fill="url(#grad-leaf)"/>
+          <path class="tulip-leaf" d="M60 205 C84 182, 95 150, 90 124 C77 142, 66 168, 60 198 Z" fill="url(#grad-leaf)" opacity="0.9"/>
+          <g class="tulip-head">
+            <path class="petal-back" d="M60 18 C43 38, 41 75, 60 100 C79 75, 77 38, 60 18 Z" fill="url(#grad-pink-inner)"/>
+            <path class="petal-left" d="M60 100 C36 92, 26 56, 36 28 C48 40, 56 68, 60 100 Z" fill="url(#grad-pink-outer)"/>
+            <path class="petal-right" d="M60 100 C84 92, 94 56, 84 28 C72 40, 64 68, 60 100 Z" fill="url(#grad-pink-outer)"/>
+            <path class="petal-front" d="M60 26 C47 46, 46 80, 60 102 C74 80, 73 46, 60 26 Z" fill="url(#grad-pink-inner)" opacity="0.92"/>
+          </g>
+        </svg>
+        <svg class="tulip tulip--white tulip--small tulip--bloomed tulip--sway-med" viewBox="0 0 120 220">
+          <path class="tulip-stem" d="M60 98 C59 135, 62 175, 60 215" stroke="url(#grad-stem)" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <path class="tulip-leaf" d="M60 198 C34 175, 22 140, 28 112 C42 132, 54 162, 60 192 Z" fill="url(#grad-leaf)"/>
+          <g class="tulip-head">
+            <path class="petal-back" d="M60 18 C43 38, 41 75, 60 100 C79 75, 77 38, 60 18 Z" fill="url(#grad-white-inner)"/>
+            <path class="petal-left" d="M60 100 C36 92, 26 56, 36 28 C48 40, 56 68, 60 100 Z" fill="url(#grad-white-outer)"/>
+            <path class="petal-right" d="M60 100 C84 92, 94 56, 84 28 C72 40, 64 68, 60 100 Z" fill="url(#grad-white-outer)"/>
+            <path class="petal-front" d="M60 26 C47 46, 46 80, 60 102 C74 80, 73 46, 60 26 Z" fill="url(#grad-white-inner)" opacity="0.95"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="corner-garden corner-garden--right" aria-hidden="true">
+        <svg class="tulip tulip--purple tulip--bloomed tulip--sway-med" viewBox="0 0 120 220">
+          <path class="tulip-stem" d="M60 98 C59 135, 62 175, 60 215" stroke="url(#grad-stem)" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <path class="tulip-leaf" d="M60 198 C34 175, 22 140, 28 112 C42 132, 54 162, 60 192 Z" fill="url(#grad-leaf)"/>
+          <path class="tulip-leaf" d="M60 205 C84 182, 95 150, 90 124 C77 142, 66 168, 60 198 Z" fill="url(#grad-leaf)" opacity="0.9"/>
+          <g class="tulip-head">
+            <path class="petal-back" d="M60 18 C43 38, 41 75, 60 100 C79 75, 77 38, 60 18 Z" fill="url(#grad-purple-inner)"/>
+            <path class="petal-left" d="M60 100 C36 92, 26 56, 36 28 C48 40, 56 68, 60 100 Z" fill="url(#grad-purple-outer)"/>
+            <path class="petal-right" d="M60 100 C84 92, 94 56, 84 28 C72 40, 64 68, 60 100 Z" fill="url(#grad-purple-outer)"/>
+            <path class="petal-front" d="M60 26 C47 46, 46 80, 60 102 C74 80, 73 46, 60 26 Z" fill="url(#grad-purple-inner)" opacity="0.92"/>
+          </g>
+        </svg>
+        <svg class="tulip tulip--pink tulip--small tulip--bloomed tulip--sway-slow" viewBox="0 0 120 220">
+          <path class="tulip-stem" d="M60 98 C59 135, 62 175, 60 215" stroke="url(#grad-stem)" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <path class="tulip-leaf" d="M60 205 C84 182, 95 150, 90 124 C77 142, 66 168, 60 198 Z" fill="url(#grad-leaf)"/>
+          <g class="tulip-head">
+            <path class="petal-back" d="M60 18 C43 38, 41 75, 60 100 C79 75, 77 38, 60 18 Z" fill="url(#grad-pink-inner)"/>
+            <path class="petal-left" d="M60 100 C36 92, 26 56, 36 28 C48 40, 56 68, 60 100 Z" fill="url(#grad-pink-outer)"/>
+            <path class="petal-right" d="M60 100 C84 92, 94 56, 84 28 C72 40, 64 68, 60 100 Z" fill="url(#grad-pink-outer)"/>
+            <path class="petal-front" d="M60 26 C47 46, 46 80, 60 102 C74 80, 73 46, 60 26 Z" fill="url(#grad-pink-inner)" opacity="0.92"/>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- SECTION 2: THE MONTHSARY INTRODUCTION -->
+    <section id="intro-section" class="screen" aria-labelledby="intro-heading" hidden>
+      <div class="screen-content intro-content">
+        <div class="intro-tulip-emblem" aria-hidden="true">
+          <svg class="tulip tulip--purple tulip--small tulip--bloomed tulip--sway-slow" viewBox="0 0 120 220">
+            <path class="tulip-stem" d="M60 98 C59 135, 62 175, 60 215" stroke="url(#grad-stem)" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <path class="tulip-leaf" d="M60 198 C34 175, 22 140, 28 112 C42 132, 54 162, 60 192 Z" fill="url(#grad-leaf)"/>
+            <g class="tulip-head">
+              <path class="petal-back" d="M60 18 C43 38, 41 75, 60 100 C79 75, 77 38, 60 18 Z" fill="url(#grad-purple-inner)"/>
+              <path class="petal-left" d="M60 100 C36 92, 26 56, 36 28 C48 40, 56 68, 60 100 Z" fill="url(#grad-purple-outer)"/>
+              <path class="petal-right" d="M60 100 C84 92, 94 56, 84 28 C72 40, 64 68, 60 100 Z" fill="url(#grad-purple-outer)"/>
+              <path class="petal-front" d="M60 26 C47 46, 46 80, 60 102 C74 80, 73 46, 60 26 Z" fill="url(#grad-purple-inner)" opacity="0.92"/>
+            </g>
+          </svg>
+          <svg class="tulip tulip--pink tulip--bloomed tulip--sway-med" viewBox="0 0 120 220">
+            <path class="tulip-stem" d="M60 98 C59 135, 62 175, 60 215" stroke="url(#grad-stem)" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <path class="tulip-leaf" d="M60 198 C34 175, 22 140, 28 112 C42 132, 54 162, 60 192 Z" fill="url(#grad-leaf)"/>
+            <path class="tulip-leaf" d="M60 205 C84 182, 95 150, 90 124 C77 142, 66 168, 60 198 Z" fill="url(#grad-leaf)" opacity="0.9"/>
+            <g class="tulip-head">
+              <path class="petal-back" d="M60 18 C43 38, 41 75, 60 100 C79 75, 77 38, 60 18 Z" fill="url(#grad-pink-inner)"/>
+              <path class="petal-left" d="M60 100 C36 92, 26 56, 36 28 C48 40, 56 68, 60 100 Z" fill="url(#grad-pink-outer)"/>
+              <path class="petal-right" d="M60 100 C84 92, 94 56, 84 28 C72 40, 64 68, 60 100 Z" fill="url(#grad-pink-outer)"/>
+              <path class="petal-front" d="M60 26 C47 46, 46 80, 60 102 C74 80, 73 46, 60 26 Z" fill="url(#grad-pink-inner)" opacity="0.92"/>
+            </g>
+          </svg>
+          <svg class="tulip tulip--white tulip--small tulip--bloomed tulip--sway-slow" viewBox="0 0 120 220">
+            <path class="tulip-stem" d="M60 98 C59 135, 62 175, 60 215" stroke="url(#grad-stem)" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <path class="tulip-leaf" d="M60 205 C84 182, 95 150, 90 124 C77 142, 66 168, 60 198 Z" fill="url(#grad-leaf)"/>
+            <g class="tulip-head">
+              <path class="petal-back" d="M60 18 C43 38, 41 75, 60 100 C79 75, 77 38, 60 18 Z" fill="url(#grad-white-inner)"/>
+              <path class="petal-left" d="M60 100 C36 92, 26 56, 36 28 C48 40, 56 68, 60 100 Z" fill="url(#grad-white-outer)"/>
+              <path class="petal-right" d="M60 100 C84 92, 94 56, 84 28 C72 40, 64 68, 60 100 Z" fill="url(#grad-white-outer)"/>
+              <path class="petal-front" d="M60 26 C47 46, 46 80, 60 102 C74 80, 73 46, 60 26 Z" fill="url(#grad-white-inner)" opacity="0.95"/>
+            </g>
+          </svg>
+        </div>
+
+        <p class="intro-tagline">And a thousand reasons to love you.</p>
+        <h2 id="intro-heading" class="intro-title">Happy 3rd Monthsary, My Boo!</h2>
+        <p class="intro-message">
+          Three months may sound like a short time, but every single day with you has become something I'll always treasure.
+        </p>
+
+        <div class="cta-wrap">
+          <button type="button" class="btn-romantic" id="btn-to-letter">
+            <span>There's Something I Want to Tell You</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: THE LOVE LETTER -->
+    <section id="letter-section" class="screen screen--scrollable" aria-labelledby="letter-indicator" hidden>
+      <div class="letter-wrapper">
+        <header class="letter-header">
+          <p id="letter-indicator" class="letter-indicator">A letter written from my heart, just for you.</p>
+          <div class="letter-controls">
+            <button type="button" class="btn-subtle" id="btn-skip-typing">Read Full Letter</button>
+          </div>
+        </header>
+
+        <!-- Progressive Blooming Tulips as Letter Unfolds -->
+        <div class="letter-bloom-row" id="letter-tulips" aria-hidden="true">
+          <svg class="tulip tulip--mini tulip--pink tulip--bud" data-bloom-step="0" viewBox="0 0 120 220">
+            <path class="tulip-stem" d="M60 98 C59 135, 62 175, 60 215" stroke="url(#grad-stem)" stroke-width="5" stroke-linecap="round" fill="none"/>
+            <g class="tulip-head">
+              <path class="petal-back" d="M60 18 C43 38, 41 75, 60 100 C79 75, 77 38, 60 18 Z" fill="url(#grad-pink-inner)"/>
+              <path class="petal-left" d="M60 100 C36 92, 26 56, 36 28 C48 40, 56 68, 60 100 Z" fill="url(#grad-pink-outer)"/>
+              <path class="petal-right" d="M60 100 C84 92, 94 56, 84 28 C72 40, 64 68, 60 100 Z" fill="url(#grad-pink-outer)"/>
+            </g>
+          </svg>
+          <svg class="tulip tulip--mini tulip--purple tulip--bud" data-bloom-step="1" viewBox="0 0 120 220">
+            <path class="tulip-stem" d="M60 98 C59 135, 62 175, 60 215" stroke="url(#grad-stem)" stroke-width="5" stroke-linecap="round" fill="none"/>
+            <g class="tulip-head">
+              <path class="petal-back" d="M60 18 C43 38, 41 75, 60 100 C79 75, 77 38, 60 18 Z" fill="url(#grad-purple-inner)"/>
+              <path class="petal-left" d="M60 100 C36 92, 26 56, 36 28 C48 40, 56 68, 60 100 Z" fill="url(#grad-purple-outer)"/>
+              <path class="petal-right" d="M60 100 C84 92, 94 56, 84 28 C72 40, 64 68, 60 100 Z" fill="url(#grad-purple-outer)"/>
+            </g>
+          </svg>
+          <svg class="tulip tulip--mini tulip--white tulip--bud" data-bloom-step="2" viewBox="0 0 120 220">
+            <path class="tulip-stem" d="M60 98 C59 135, 62 175, 60 215" stroke="url(#grad-stem)" stroke-width="5" stroke-linecap="round" fill="none"/>
+            <g class="tulip-head">
+              <path class="petal-back" d="M60 18 C43 38, 41 75, 60 100 C79 75, 77 38, 60 18 Z" fill="url(#grad-white-inner)"/>
+              <path class="petal-left" d="M60 100 C36 92, 26 56, 36 28 C48 40, 56 68, 60 100 Z" fill="url(#grad-white-outer)"/>
+              <path class="petal-right" d="M60 100 C84 92, 94 56, 84 28 C72 40, 64 68, 60 100 Z" fill="url(#grad-white-outer)"/>
+            </g>
+          </svg>
+          <svg class="tulip tulip--mini tulip--pink tulip--bud" data-bloom-step="3" viewBox="0 0 120 220">
+            <path class="tulip-stem" d="M60 98 C59 135, 62 175, 60 215" stroke="url(#grad-stem)" stroke-width="5" stroke-linecap="round" fill="none"/>
+            <g class="tulip-head">
+              <path class="petal-back" d="M60 18 C43 38, 41 75, 60 100 C79 75, 77 38, 60 18 Z" fill="url(#grad-pink-inner)"/>
+              <path class="petal-left" d="M60 100 C36 92, 26 56, 36 28 C48 40, 56 68, 60 100 Z" fill="url(#grad-pink-outer)"/>
+              <path class="petal-right" d="M60 100 C84 92, 94 56, 84 28 C72 40, 64 68, 60 100 Z" fill="url(#grad-pink-outer)"/>
+            </g>
+          </svg>
+          <svg class="tulip tulip--mini tulip--purple tulip--bud" data-bloom-step="4" viewBox="0 0 120 220">
+            <path class="tulip-stem" d="M60 98 C59 135, 62 175, 60 215" stroke="url(#grad-stem)" stroke-width="5" stroke-linecap="round" fill="none"/>
+            <g class="tulip-head">
+              <path class="petal-back" d="M60 18 C43 38, 41 75, 60 100 C79 75, 77 38, 60 18 Z" fill="url(#grad-purple-inner)"/>
+              <path class="petal-left" d="M60 100 C36 92, 26 56, 36 28 C48 40, 56 68, 60 100 Z" fill="url(#grad-purple-outer)"/>
+              <path class="petal-right" d="M60 100 C84 92, 94 56, 84 28 C72 40, 64 68, 60 100 Z" fill="url(#grad-purple-outer)"/>
+            </g>
+          </svg>
+        </div>
+
+        <article class="letter-paper" aria-label="Love letter for My Boo">
+          <div class="letter-corner letter-corner--tl" aria-hidden="true">
+            <svg viewBox="0 0 120 220" class="tulip-accent">
+              <path d="M60 98 C59 135, 62 175, 60 215" stroke="url(#grad-stem)" stroke-width="4" stroke-linecap="round" fill="none"/>
+              <path d="M60 18 C43 38, 41 75, 60 100 C79 75, 77 38, 60 18 Z" fill="url(#grad-pink-inner)"/>
+              <path d="M60 100 C36 92, 26 56, 36 28 C48 40, 56 68, 60 100 Z" fill="url(#grad-pink-outer)"/>
+              <path d="M60 100 C84 92, 94 56, 84 28 C72 40, 64 68, 60 100 Z" fill="url(#grad-pink-outer)"/>
+            </svg>
+          </div>
+          <div class="letter-corner letter-corner--br" aria-hidden="true">
+            <svg viewBox="0 0 120 220" class="tulip-accent">
+              <path d="M60 98 C59 135, 62 175, 60 215" stroke="url(#grad-stem)" stroke-width="4" stroke-linecap="round" fill="none"/>
+              <path d="M60 18 C43 38, 41 75, 60 100 C79 75, 77 38, 60 18 Z" fill="url(#grad-purple-inner)"/>
+              <path d="M60 100 C36 92, 26 56, 36 28 C48 40, 56 68, 60 100 Z" fill="url(#grad-purple-outer)"/>
+              <path d="M60 100 C84 92, 94 56, 84 28 C72 40, 64 68, 60 100 Z" fill="url(#grad-purple-outer)"/>
+            </svg>
+          </div>
+
+          <div id="letter-body" class="letter-body" aria-live="polite"></div>
+        </article>
+
+        <footer class="letter-footer" id="letter-footer" hidden>
+          <button type="button" class="btn-romantic" id="btn-to-surprise">
+            <span>Continue to Your Surprise ♡</span>
+          </button>
+        </footer>
+      </div>
+    </section>
+
+    <!-- SECTION 4: THE FINAL SURPRISE -->
+    <section id="surprise-section" class="screen" aria-labelledby="surprise-heading" hidden>
+      <div class="screen-content surprise-content">
+        <div class="heart-aura" aria-hidden="true">
+          <svg class="glowing-heart" viewBox="0 0 64 64" width="64" height="64">
+            <defs>
+              <linearGradient id="heart-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#F7C6D9"/>
+                <stop offset="50%" stop-color="#F3AFCB"/>
+                <stop offset="100%" stop-color="#B99AE8"/>
+              </linearGradient>
+            </defs>
+            <path d="M32 56.5C32 56.5 8 41.2 8 22.8C8 14.5 14.5 8 22.5 8C27.2 8 30.8 10.4 32 13.5C33.2 10.4 36.8 8 41.5 8C49.5 8 56 14.5 56 22.8C56 41.2 32 56.5 32 56.5Z" fill="url(#heart-grad)"/>
+          </svg>
+        </div>
+
+        <p class="surprise-quote surprise-step" id="surprise-quote">
+          "And if I had to live these three months all over again, I would still find my way back to you."
+        </p>
+
+        <h2 id="surprise-heading" class="surprise-title surprise-step">
+          Happy 3rd Monthsary, My Boo!
+        </h2>
+
+        <p class="surprise-promise surprise-step" id="surprise-promise">
+          No matter what happens, I'll always choose you. I'll always stay.
+        </p>
+
+        <div class="surprise-actions surprise-step" id="surprise-actions">
+          <button type="button" class="btn-subtle" id="btn-reread-letter">Read the Letter Again</button>
+        </div>
+      </div>
+
+      <!-- Blooming Tulip Garden Around the Final Screen -->
+      <div class="surprise-garden" id="surprise-garden" aria-hidden="true">
+        <svg class="tulip tulip--pink tulip--bud tulip--sway-slow" viewBox="0 0 120 220">
+          <path class="tulip-stem" d="M60 98 C59 135, 62 175, 60 215" stroke="url(#grad-stem)" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <path class="tulip-leaf" d="M60 198 C34 175, 22 140, 28 112 C42 132, 54 162, 60 192 Z" fill="url(#grad-leaf)"/>
+          <g class="tulip-head">
+            <path class="petal-back" d="M60 18 C43 38, 41 75, 60 100 C79 75, 77 38, 60 18 Z" fill="url(#grad-pink-inner)"/>
+            <path class="petal-left" d="M60 100 C36 92, 26 56, 36 28 C48 40, 56 68, 60 100 Z" fill="url(#grad-pink-outer)"/>
+            <path class="petal-right" d="M60 100 C84 92, 94 56, 84 28 C72 40, 64 68, 60 100 Z" fill="url(#grad-pink-outer)"/>
+            <path class="petal-front" d="M60 26 C47 46, 46 80, 60 102 C74 80, 73 46, 60 26 Z" fill="url(#grad-pink-inner)" opacity="0.92"/>
+          </g>
+        </svg>
+        <svg class="tulip tulip--purple tulip--bud tulip--sway-med" viewBox="0 0 120 220">
+          <path class="tulip-stem" d="M60 98 C59 135, 62 175, 60 215" stroke="url(#grad-stem)" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <path class="tulip-leaf" d="M60 205 C84 182, 95 150, 90 124 C77 142, 66 168, 60 198 Z" fill="url(#grad-leaf)"/>
+          <g class="tulip-head">
+            <path class="petal-back" d="M60 18 C43 38, 41 75, 60 100 C79 75, 77 38, 60 18 Z" fill="url(#grad-purple-inner)"/>
+            <path class="petal-left" d="M60 100 C36 92, 26 56, 36 28 C48 40, 56 68, 60 100 Z" fill="url(#grad-purple-outer)"/>
+            <path class="petal-right" d="M60 100 C84 92, 94 56, 84 28 C72 40, 64 68, 60 100 Z" fill="url(#grad-purple-outer)"/>
+            <path class="petal-front" d="M60 26 C47 46, 46 80, 60 102 C74 80, 73 46, 60 26 Z" fill="url(#grad-purple-inner)" opacity="0.92"/>
+          </g>
+        </svg>
+        <svg class="tulip tulip--white tulip--bud tulip--sway-slow" viewBox="0 0 120 220">
+          <path class="tulip-stem" d="M60 98 C59 135, 62 175, 60 215" stroke="url(#grad-stem)" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <path class="tulip-leaf" d="M60 198 C34 175, 22 140, 28 112 C42 132, 54 162, 60 192 Z" fill="url(#grad-leaf)"/>
+          <g class="tulip-head">
+            <path class="petal-back" d="M60 18 C43 38, 41 75, 60 100 C79 75, 77 38, 60 18 Z" fill="url(#grad-white-inner)"/>
+            <path class="petal-left" d="M60 100 C36 92, 26 56, 36 28 C48 40, 56 68, 60 100 Z" fill="url(#grad-white-outer)"/>
+            <path class="petal-right" d="M60 100 C84 92, 94 56, 84 28 C72 40, 64 68, 60 100 Z" fill="url(#grad-white-outer)"/>
+            <path class="petal-front" d="M60 26 C47 46, 46 80, 60 102 C74 80, 73 46, 60 26 Z" fill="url(#grad-white-inner)" opacity="0.95"/>
+          </g>
+        </svg>
+        <svg class="tulip tulip--pink tulip--bud tulip--sway-med" viewBox="0 0 120 220">
+          <path class="tulip-stem" d="M60 98 C59 135, 62 175, 60 215" stroke="url(#grad-stem)" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <path class="tulip-leaf" d="M60 205 C84 182, 95 150, 90 124 C77 142, 66 168, 60 198 Z" fill="url(#grad-leaf)"/>
+          <g class="tulip-head">
+            <path class="petal-back" d="M60 18 C43 38, 41 75, 60 100 C79 75, 77 38, 60 18 Z" fill="url(#grad-pink-inner)"/>
+            <path class="petal-left" d="M60 100 C36 92, 26 56, 36 28 C48 40, 56 68, 60 100 Z" fill="url(#grad-pink-outer)"/>
+            <path class="petal-right" d="M60 100 C84 92, 94 56, 84 28 C72 40, 64 68, 60 100 Z" fill="url(#grad-pink-outer)"/>
+            <path class="petal-front" d="M60 26 C47 46, 46 80, 60 102 C74 80, 73 46, 60 26 Z" fill="url(#grad-pink-inner)" opacity="0.92"/>
+          </g>
+        </svg>
+        <svg class="tulip tulip--purple tulip--bud tulip--sway-slow" viewBox="0 0 120 220">
+          <path class="tulip-stem" d="M60 98 C59 135, 62 175, 60 215" stroke="url(#grad-stem)" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <path class="tulip-leaf" d="M60 198 C34 175, 22 140, 28 112 C42 132, 54 162, 60 192 Z" fill="url(#grad-leaf)"/>
+          <g class="tulip-head">
+            <path class="petal-back" d="M60 18 C43 38, 41 75, 60 100 C79 75, 77 38, 60 18 Z" fill="url(#grad-purple-inner)"/>
+            <path class="petal-left" d="M60 100 C36 92, 26 56, 36 28 C48 40, 56 68, 60 100 Z" fill="url(#grad-purple-outer)"/>
+            <path class="petal-right" d="M60 100 C84 92, 94 56, 84 28 C72 40, 64 68, 60 100 Z" fill="url(#grad-purple-outer)"/>
+            <path class="petal-front" d="M60 26 C47 46, 46 80, 60 102 C74 80, 73 46, 60 26 Z" fill="url(#grad-purple-inner)" opacity="0.92"/>
+          </g>
+        </svg>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

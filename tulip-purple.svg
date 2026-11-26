@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 220" fill="none">
+  <defs>
+    <linearGradient id="stemPurple" x1="60" y1="95" x2="60" y2="215" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#8BAE8A"/>
+      <stop offset="100%" stop-color="#608462"/>
+    </linearGradient>
+    <linearGradient id="leafPurple" x1="30" y1="130" x2="70" y2="210" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#9BC19A" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#6A916B" stop-opacity="0.85"/>
+    </linearGradient>
+    <linearGradient id="petalPurpleOuter" x1="60" y1="20" x2="60" y2="105" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#EFE3FF"/>
+      <stop offset="55%" stop-color="#B99AE8"/>
+      <stop offset="100%" stop-color="#8055A6"/>
+    </linearGradient>
+    <linearGradient id="petalPurpleInner" x1="60" y1="15" x2="60" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FAF5FF"/>
+      <stop offset="60%" stop-color="#DCC6F5"/>
+      <stop offset="100%" stop-color="#9B72CF"/>
+    </linearGradient>
+  </defs>
+  <path d="M60 98 C59 135, 62 175, 60 215" stroke="url(#stemPurple)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M60 198 C34 175, 22 140, 28 112 C42 132, 54 162, 60 192 Z" fill="url(#leafPurple)"/>
+  <path d="M60 205 C84 182, 95 150, 90 124 C77 142, 66 168, 60 198 Z" fill="url(#leafPurple)" opacity="0.9"/>
+  <path d="M60 18 C43 38, 41 75, 60 100 C79 75, 77 38, 60 18 Z" fill="url(#petalPurpleInner)"/>
+  <path d="M60 100 C36 92, 26 56, 36 28 C48 40, 56 68, 60 100 Z" fill="url(#petalPurpleOuter)" opacity="0.95"/>
+  <path d="M60 100 C84 92, 94 56, 84 28 C72 40, 64 68, 60 100 Z" fill="url(#petalPurpleOuter)" opacity="0.95"/>
+  <path d="M60 26 C47 46, 46 80, 60 102 C74 80, 73 46, 60 26 Z" fill="url(#petalPurpleInner)" opacity="0.92"/>
+</svg>
+

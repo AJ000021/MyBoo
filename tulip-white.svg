@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 220" fill="none">
+  <defs>
+    <linearGradient id="stemWhite" x1="60" y1="95" x2="60" y2="215" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#8BAE8A"/>
+      <stop offset="100%" stop-color="#608462"/>
+    </linearGradient>
+    <linearGradient id="leafWhite" x1="30" y1="130" x2="70" y2="210" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#9BC19A" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#6A916B" stop-opacity="0.85"/>
+    </linearGradient>
+    <linearGradient id="petalWhiteOuter" x1="60" y1="20" x2="60" y2="105" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="65%" stop-color="#FFF9FC"/>
+      <stop offset="100%" stop-color="#F7C6D9"/>
+    </linearGradient>
+    <linearGradient id="petalWhiteInner" x1="60" y1="15" x2="60" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="70%" stop-color="#FDF2F7"/>
+      <stop offset="100%" stop-color="#DCC6F5"/>
+    </linearGradient>
+  </defs>
+  <path d="M60 98 C59 135, 62 175, 60 215" stroke="url(#stemWhite)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M60 198 C34 175, 22 140, 28 112 C42 132, 54 162, 60 192 Z" fill="url(#leafWhite)"/>
+  <path d="M60 205 C84 182, 95 150, 90 124 C77 142, 66 168, 60 198 Z" fill="url(#leafWhite)" opacity="0.9"/>
+  <path d="M60 18 C43 38, 41 75, 60 100 C79 75, 77 38, 60 18 Z" fill="url(#petalWhiteInner)"/>
+  <path d="M60 100 C36 92, 26 56, 36 28 C48 40, 56 68, 60 100 Z" fill="url(#petalWhiteOuter)" opacity="0.96"/>
+  <path d="M60 100 C84 92, 94 56, 84 28 C72 40, 64 68, 60 100 Z" fill="url(#petalWhiteOuter)" opacity="0.96"/>
+  <path d="M60 26 C47 46, 46 80, 60 102 C74 80, 73 46, 60 26 Z" fill="url(#petalWhiteInner)" opacity="0.95"/>
+</svg>
+

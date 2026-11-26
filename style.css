@@ -1,0 +1,895 @@
+/* ==========================================================================
+   Three Months With You — Dreamy Pink & Purple Love Letter
+   ========================================================================== */
+
+:root {
+  --blush: #F7C6D9;
+  --pink: #F3AFCB;
+  --lavender: #DCC6F5;
+  --soft-purple: #B99AE8;
+  --deep-purple: #8055A6;
+  --white: #FFF9FC;
+
+  --ink-dark: #3B2050;
+  --ink-medium: #5C3A75;
+  --ink-soft: #7E5B99;
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-hand: 'Dancing Script', 'Brush Script MT', cursive;
+  --font-body: 'Lora', Georgia, serif;
+
+  --ease-dreamy: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+  font-family: var(--font-body);
+  color: var(--ink-dark);
+  background: linear-gradient(135deg, #FCE4EE 0%, #EAD6FA 48%, #D7BDF2 100%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  position: relative;
+  transition: background 1.8s var(--ease-dreamy);
+}
+
+/* Brighter, luminous atmosphere for the Final Surprise */
+body.is-bright {
+  background: linear-gradient(135deg, #FFF9FC 0%, #FCE2EE 45%, #EFE2FC 100%);
+}
+
+/* ==========================================================================
+   Ambient Background, Glowing Orbs & Canvas
+   ========================================================================== */
+
+.svg-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ambient-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(247, 198, 217, 0.55) 0%, transparent 50%),
+    radial-gradient(circle at 82% 28%, rgba(220, 198, 245, 0.6) 0%, transparent 52%),
+    radial-gradient(circle at 50% 85%, rgba(185, 154, 232, 0.38) 0%, transparent 55%);
+  transition: opacity 1.6s ease;
+}
+
+body.is-bright .ambient-backdrop {
+  background:
+    radial-gradient(circle at 25% 20%, rgba(255, 249, 252, 0.85) 0%, transparent 55%),
+    radial-gradient(circle at 75% 30%, rgba(247, 198, 217, 0.55) 0%, transparent 55%),
+    radial-gradient(circle at 50% 80%, rgba(220, 198, 245, 0.5) 0%, transparent 60%);
+}
+
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.45;
+  animation: orbDrift 18s ease-in-out infinite alternate;
+}
+
+.glow-orb-1 {
+  width: 340px;
+  height: 340px;
+  background: var(--pink);
+  top: -80px;
+  left: -60px;
+}
+
+.glow-orb-2 {
+  width: 380px;
+  height: 380px;
+  background: var(--soft-purple);
+  bottom: -100px;
+  right: -80px;
+  animation-delay: -6s;
+}
+
+.glow-orb-3 {
+  width: 260px;
+  height: 260px;
+  background: var(--white);
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.35;
+  animation-delay: -11s;
+}
+
+@keyframes orbDrift {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(28px, -24px) scale(1.08); }
+}
+
+#ambient-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Music Player
+   ========================================================================== */
+
+.music-player {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255, 249, 252, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(185, 154, 232, 0.45);
+  box-shadow: 0 8px 24px rgba(128, 85, 166, 0.14);
+  transition: transform 0.3s var(--ease-dreamy), box-shadow 0.3s ease;
+}
+
+.music-player:hover {
+  box-shadow: 0 10px 28px rgba(128, 85, 166, 0.22);
+}
+
+.music-eq {
+  display: flex;
+  align-items: flex-end;
+  gap: 2.5px;
+  height: 14px;
+  width: 14px;
+}
+
+.music-eq span {
+  display: block;
+  width: 3px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--deep-purple);
+  transition: height 0.2s ease;
+}
+
+.music-player.is-playing .music-eq span:nth-child(1) {
+  animation: eqBar 0.9s ease-in-out infinite alternate;
+}
+.music-player.is-playing .music-eq span:nth-child(2) {
+  animation: eqBar 0.7s ease-in-out 0.2s infinite alternate;
+}
+.music-player.is-playing .music-eq span:nth-child(3) {
+  animation: eqBar 1.05s ease-in-out 0.4s infinite alternate;
+}
+
+@keyframes eqBar {
+  0% { height: 4px; }
+  100% { height: 14px; }
+}
+
+.music-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+  padding-right: 4px;
+}
+
+.music-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--ink-dark);
+}
+
+.music-artist {
+  font-size: 0.7rem;
+  color: var(--ink-soft);
+}
+
+.music-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.music-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(185, 154, 232, 0.45);
+  background: rgba(255, 249, 252, 0.85);
+  color: var(--deep-purple);
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
+}
+
+.music-btn:hover {
+  background: var(--deep-purple);
+  color: var(--white);
+  transform: scale(1.06);
+}
+
+.music-btn:focus-visible {
+  outline: 2px solid var(--deep-purple);
+  outline-offset: 2px;
+}
+
+.music-player .icon-pause,
+.music-player .icon-muted {
+  display: none;
+}
+
+.music-player.is-playing .icon-play {
+  display: none;
+}
+.music-player.is-playing .icon-pause {
+  display: block;
+}
+
+.music-player.is-muted .icon-unmuted {
+  display: none;
+}
+.music-player.is-muted .icon-muted {
+  display: block;
+}
+
+/* ==========================================================================
+   Sections & Transitions
+   ========================================================================== */
+
+main#experience {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: clip;
+}
+
+.screen {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 1.5rem 4rem;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.95s var(--ease-dreamy), transform 0.95s var(--ease-dreamy);
+}
+
+.screen[hidden] {
+  display: none;
+}
+
+.screen--active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.screen--leaving {
+  opacity: 0;
+  transform: translateY(-14px);
+}
+
+.screen--scrollable {
+  justify-content: flex-start;
+  padding-top: 5.2rem;
+  padding-bottom: 5rem;
+}
+
+.screen-content {
+  position: relative;
+  z-index: 3;
+  max-width: 720px;
+  width: 100%;
+  text-align: center;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.cta-wrap {
+  margin-top: 2.2rem;
+}
+
+.btn-romantic {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95rem 2.2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 249, 252, 0.7);
+  background: linear-gradient(135deg, #E896BA 0%, #9E73CA 100%);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 1.18rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  box-shadow:
+    0 10px 28px rgba(128, 85, 166, 0.28),
+    0 0 22px rgba(243, 175, 203, 0.45);
+  transition: transform 0.35s var(--ease-dreamy), box-shadow 0.35s ease, filter 0.35s ease;
+}
+
+.btn-romantic:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow:
+    0 14px 34px rgba(128, 85, 166, 0.36),
+    0 0 30px rgba(243, 175, 203, 0.65);
+  filter: brightness(1.04);
+}
+
+.btn-romantic:active {
+  transform: translateY(0) scale(0.99);
+}
+
+.btn-romantic:focus-visible,
+.btn-subtle:focus-visible {
+  outline: 2px solid var(--deep-purple);
+  outline-offset: 3px;
+}
+
+.btn-subtle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(128, 85, 166, 0.35);
+  background: rgba(255, 249, 252, 0.65);
+  backdrop-filter: blur(8px);
+  color: var(--deep-purple);
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.btn-subtle:hover {
+  background: rgba(255, 249, 252, 0.95);
+  border-color: var(--deep-purple);
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Section 1: Welcome Screen
+   ========================================================================== */
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--deep-purple);
+  margin-bottom: 0.9rem;
+  opacity: 0.85;
+}
+
+.welcome-title {
+  font-family: var(--font-hand);
+  font-size: clamp(2.9rem, 8vw, 4.8rem);
+  font-weight: 600;
+  color: var(--ink-dark);
+  line-height: 1.15;
+  text-shadow: 0 2px 24px rgba(255, 249, 252, 0.8);
+}
+
+.welcome-subtitle {
+  margin-top: 1rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 3vw, 1.65rem);
+  font-style: italic;
+  color: var(--ink-medium);
+}
+
+.fade-stagger {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: fadeUpIn 1s var(--ease-dreamy) forwards;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes fadeUpIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Corner Tulip Gardens */
+.corner-garden {
+  position: fixed;
+  bottom: -10px;
+  display: flex;
+  align-items: flex-end;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.corner-garden--left {
+  left: 2vw;
+}
+
+.corner-garden--right {
+  right: 2vw;
+}
+
+/* ==========================================================================
+   Tulip SVG Animations
+   ========================================================================== */
+
+.tulip {
+  width: 92px;
+  height: auto;
+  overflow: visible;
+  transform-origin: bottom center;
+  filter: drop-shadow(0 8px 16px rgba(128, 85, 166, 0.14));
+}
+
+.tulip--small {
+  width: 68px;
+  margin-left: -18px;
+}
+
+.corner-garden--right .tulip--small {
+  margin-left: 0;
+  margin-right: -18px;
+  order: -1;
+}
+
+.tulip--mini {
+  width: 34px;
+}
+
+.tulip-head {
+  transform-origin: 60px 100px;
+  transition: transform 1.6s var(--ease-dreamy);
+}
+
+.petal-left,
+.petal-right,
+.petal-back,
+.petal-front {
+  transform-origin: 60px 100px;
+  transition: transform 1.8s var(--ease-dreamy), opacity 1.4s ease;
+}
+
+/* Closed Bud State */
+.tulip--bud .tulip-head {
+  transform: scale(0.76);
+}
+.tulip--bud .petal-left {
+  transform: rotate(15deg) scaleX(0.84);
+}
+.tulip--bud .petal-right {
+  transform: rotate(-15deg) scaleX(0.84);
+}
+
+/* Bloomed State */
+.tulip--bloomed .tulip-head {
+  transform: scale(1);
+}
+.tulip--bloomed .petal-left {
+  transform: rotate(-5deg) scaleX(1);
+}
+.tulip--bloomed .petal-right {
+  transform: rotate(5deg) scaleX(1);
+}
+
+.tulip--sway-slow {
+  animation: tulipSway 6.5s ease-in-out infinite alternate;
+}
+
+.tulip--sway-med {
+  animation: tulipSway 5.2s ease-in-out -2s infinite alternate;
+}
+
+@keyframes tulipSway {
+  0% { transform: rotate(-2.4deg); }
+  100% { transform: rotate(2.6deg); }
+}
+
+/* ==========================================================================
+   Section 2: Monthsary Introduction
+   ========================================================================== */
+
+.intro-content {
+  background: rgba(255, 249, 252, 0.56);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 249, 252, 0.85);
+  border-radius: 28px;
+  padding: clamp(2rem, 5vw, 3.4rem) clamp(1.5rem, 4vw, 3rem);
+  box-shadow:
+    0 20px 50px rgba(128, 85, 166, 0.12),
+    inset 0 0 32px rgba(247, 198, 217, 0.25);
+}
+
+.intro-tulip-emblem {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: 1rem;
+  height: 118px;
+}
+
+.intro-tulip-emblem .tulip {
+  width: 64px;
+}
+
+.intro-tulip-emblem .tulip--small {
+  width: 50px;
+  margin: 0 -10px;
+}
+
+.intro-tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--deep-purple);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.6rem;
+}
+
+.intro-title {
+  font-family: var(--font-hand);
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  font-weight: 600;
+  color: var(--ink-dark);
+  line-height: 1.2;
+}
+
+.intro-message {
+  margin: 1.25rem auto 0;
+  max-width: 540px;
+  font-size: clamp(1.02rem, 2.2vw, 1.18rem);
+  line-height: 1.75;
+  color: var(--ink-medium);
+}
+
+/* ==========================================================================
+   Section 3: The Love Letter
+   ========================================================================== */
+
+.letter-wrapper {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.letter-header {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.letter-indicator {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.12rem;
+  color: var(--ink-medium);
+}
+
+.letter-bloom-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 1.25rem;
+  min-height: 62px;
+}
+
+.letter-paper {
+  position: relative;
+  width: 100%;
+  padding: clamp(2rem, 5vw, 3.5rem) clamp(1.4rem, 5vw, 3.4rem);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at top left, rgba(247, 198, 217, 0.26), transparent 45%),
+    radial-gradient(circle at bottom right, rgba(220, 198, 245, 0.3), transparent 48%),
+    linear-gradient(180deg, #FFF9FC 0%, #FDF2F7 100%);
+  border: 1px solid rgba(220, 198, 245, 0.75);
+  box-shadow:
+    0 24px 60px rgba(128, 85, 166, 0.14),
+    0 4px 16px rgba(243, 175, 203, 0.2),
+    inset 0 0 0 8px rgba(255, 249, 252, 0.6);
+}
+
+.letter-corner {
+  position: absolute;
+  width: 56px;
+  opacity: 0.42;
+  pointer-events: none;
+}
+
+.letter-corner--tl {
+  top: 12px;
+  left: 14px;
+  transform: rotate(-14deg);
+}
+
+.letter-corner--br {
+  bottom: 12px;
+  right: 14px;
+  transform: rotate(14deg);
+}
+
+.tulip-accent {
+  width: 100%;
+  height: auto;
+}
+
+.letter-body {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-body);
+  font-size: clamp(0.98rem, 1.8vw, 1.1rem);
+  line-height: 1.88;
+  color: var(--ink-dark);
+  text-align: left;
+}
+
+.letter-paragraph {
+  margin-bottom: 1.35rem;
+}
+
+.letter-paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.letter-paragraph--salutation {
+  font-family: var(--font-hand);
+  font-size: clamp(1.65rem, 3.5vw, 2.1rem);
+  color: var(--deep-purple);
+  margin-bottom: 1.1rem;
+}
+
+.letter-paragraph--promise {
+  padding: 0.9rem 1.2rem;
+  border-left: 3px solid var(--soft-purple);
+  background: linear-gradient(90deg, rgba(247, 198, 217, 0.22), rgba(220, 198, 245, 0.12));
+  border-radius: 0 12px 12px 0;
+  font-style: italic;
+  color: var(--ink-dark);
+}
+
+.letter-paragraph--signoff {
+  font-family: var(--font-hand);
+  font-size: clamp(1.55rem, 3.2vw, 1.95rem);
+  color: var(--deep-purple);
+  margin-top: 1.6rem;
+  line-height: 1.5;
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  margin-left: 3px;
+  vertical-align: -0.16em;
+  background-color: var(--deep-purple);
+  animation: cursorBlink 0.9s steps(2, start) infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.letter-footer {
+  margin-top: 2.2rem;
+  animation: fadeUpIn 0.8s var(--ease-dreamy) forwards;
+}
+
+.letter-footer[hidden] {
+  display: none;
+}
+
+/* ==========================================================================
+   Section 4: The Final Surprise
+   ========================================================================== */
+
+.surprise-content {
+  max-width: 680px;
+  padding-bottom: 4.5rem;
+}
+
+.heart-aura {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.6rem;
+}
+
+.glowing-heart {
+  filter: drop-shadow(0 0 18px rgba(243, 175, 203, 0.85))
+          drop-shadow(0 0 36px rgba(185, 154, 232, 0.65));
+  animation: heartBeat 2.6s ease-in-out infinite;
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.09); }
+  45% { transform: scale(0.98); }
+  65% { transform: scale(1.06); }
+}
+
+.surprise-step {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 1.1s var(--ease-dreamy), transform 1.1s var(--ease-dreamy);
+}
+
+.surprise-step.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.surprise-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.25rem, 3vw, 1.65rem);
+  line-height: 1.6;
+  color: var(--ink-medium);
+  margin-bottom: 1.4rem;
+}
+
+.surprise-title {
+  font-family: var(--font-hand);
+  font-size: clamp(2.5rem, 6.5vw, 4rem);
+  font-weight: 600;
+  color: var(--deep-purple);
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
+  text-shadow: 0 2px 24px rgba(247, 198, 217, 0.7);
+}
+
+.surprise-promise {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.8vw, 1.55rem);
+  font-weight: 600;
+  color: var(--ink-dark);
+  line-height: 1.55;
+}
+
+.surprise-actions {
+  margin-top: 2.2rem;
+}
+
+.surprise-garden {
+  position: fixed;
+  bottom: -14px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: clamp(4px, 3vw, 42px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.surprise-garden .tulip {
+  width: clamp(56px, 10vw, 102px);
+}
+
+/* ==========================================================================
+   Responsive Adjustments
+   ========================================================================== */
+
+@media (max-width: 640px) {
+  .music-player {
+    top: 12px;
+    bottom: auto;
+    right: 12px;
+    padding: 6px 11px;
+    gap: 8px;
+  }
+
+  .screen {
+    padding: 4.5rem 1rem 5.5rem;
+  }
+
+  .screen--scrollable {
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+  }
+
+  .intro-content {
+    padding: 1.75rem 1.25rem;
+    border-radius: 22px;
+  }
+
+  .letter-paper {
+    padding: 1.75rem 1.2rem;
+    border-radius: 16px;
+  }
+
+  .letter-paragraph--promise {
+    padding: 0.75rem 1rem;
+  }
+
+  .corner-garden .tulip {
+    width: 60px;
+  }
+
+  .corner-garden .tulip--small {
+    width: 44px;
+  }
+
+  .surprise-garden {
+    gap: 2px;
+  }
+
+  .surprise-garden .tulip {
+    width: clamp(46px, 14vw, 68px);
+  }
+
+  .letter-header {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .letter-corner {
+    width: 38px;
+  }
+}
+
+/* ==========================================================================
+   Reduced Motion Accessibility
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.2s !important;
+  }
+
+  .fade-stagger,
+  .surprise-step {
+    opacity: 1;
+    transform: none;
+  }
+}
+
