@@ -258,11 +258,11 @@
     },
     {
       type: 'normal',
-      text: "You know what's funny? When someone asks me about my most unforgettable moment with you, I honestly cannot choose just one. It's because every day with you becomes a moment I never want to forget. It doesn't always have to be something grand or extraordinary. Sometimes, it's just talking to you, laughing with you, hearing your voice, sharing little things, or simply knowing that you're there. Even the simplest moments become special because they're with you."
+      text: "Alam boo, When someone asks me about my most unforgettable moment with you, I honestly cannot choose just one. It's because every day with you becomes a moment I never want to forget. It doesn't always have to be something grand or extraordinary. Sometimes, it's just talking to you, laughing with you, hearing your voice, sharing little things, or simply knowing that you're there. Even the simplest moments become special because they're with you."
     },
     {
       type: 'normal',
-      text: "I want you to know that I love everything about you. Your personality, your smile, your little habits, your happiness, your imperfections, and all the little things that make you who you are. I don't want you to feel that you need to change yourself just to deserve my love. I want to appreciate you for being you."
+      text: "I want you to know that I love everything about you. Your personality, your smile, your little habits, your happiness, your imperfections (kahit wala ka nyan), and all the little things that make you who you are. I want to appreciate you for being you."
     },
     {
       type: 'normal',
@@ -270,7 +270,7 @@
     },
     {
       type: 'normal',
-      text: "I cannot promise that everything will always be easy. There may be misunderstandings, difficult days, and moments when things aren't perfect. But I want you to remember this: I don't want to be someone who only stays when everything is beautiful. I want to be someone who stays even when things get difficult."
+      text: "I cannot promise that everything will always be easy. There may be misunderstandings, difficult days, and moments when things aren't perfect. But I want you to remember this, I don't want to be someone who only stays when everything is beautiful. I want to be someone who stays even when things get difficult."
     },
     {
       type: 'promise',
